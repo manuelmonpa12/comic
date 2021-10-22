@@ -7,18 +7,22 @@ export default {
     },
     data: function () {
         return {
-            loading: false
+            loading: false,
+            dataComic:[]
         }
     },
     methods: {
         getComic,
+        async fetchData (){
+            this.dataComic = await this.getComic()
+            console.log('data :>> ', this.dataComic);
+        },
         activeParentModal() {
             this.loading = true
         }
     },
     mounted() {
-       let data = this.getComic()
-       console.log('data :>> ', data);
+       
     }
 
 }
