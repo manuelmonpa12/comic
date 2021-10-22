@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify'
 import VueSuperagent from 'vue-superagent'
 
 Vue.config.productionTip = false
+Vue.use(VueSuperagent)
 
 new Vue({
   router,
