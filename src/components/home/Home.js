@@ -19,8 +19,8 @@ export default {
     },
     methods: {
         getComic,
-        async fetchData (){
-            this.dataComic = await this.getComic()
+        fetchData (){
+            this.dataComic = this.getComic()
             console.log('data :>> ', this.dataComic);
         },
         activeParentModal() {
