@@ -1,15 +1,12 @@
 <template>
-  <v-row>
-    <v-col
-      cols="12"
+  <v-row 
+      class="d-flex justify-center flex-column align-center mt-2">
+      <v-col class="border-item-dashed mb-5" cols="12"
       xs="12"
       sm="12"
-      md="12"
-      lg="12"
-      xl="12"
-      class="d-flex justify-center flex-column align-center mt-2"
-    >
-      <div class="border-item-dashed mb-5">
+      md="8"
+      lg="7"
+      xl="6">
         <h2 class=" d-flex justify-center p-title">
           Comic Manu
         </h2>
@@ -58,8 +55,13 @@
             ramdom
           </v-btn>
         </v-card-actions>
-      </div>
-      <div class="border-item-dashed">
+      </v-col>
+      <v-col class="border-item-dashed" cols="12"
+      xs="12"
+      sm="12"
+      md="8"
+      lg="7"
+      xl="6">>
         <h2 class="d-flex justify-center p-title">
           Clasificacion
         </h2>
@@ -86,8 +88,7 @@
             ></v-skeleton-loader>
           </v-sheet>
         </div>
-      </div>
-    </v-col>
+      </v-col>
     <loader :visible="true" />
   </v-row>
 </template>
