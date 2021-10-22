@@ -14,11 +14,6 @@ export default {
         getComic,
         activeParentModal() {
             this.loading = true
-            // setTimeout(() => {
-            //     this.$router.push({
-            //         name: 'search'
-            //     })
-            // }, 1400);
         }
     },
     mounted() {
