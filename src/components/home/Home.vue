@@ -14,8 +14,8 @@
           <h3 class="p-text" v-if="dataComic">{{ dataComic.safe_title }}</h3>
           <v-img
             v-if="dataComic"
-            max-height="450"
-            max-width="250"
+            max-height="250"
+            min-width="250"
             :src="dataComic.img"
           ></v-img>
           <v-sheet
@@ -61,7 +61,7 @@
       sm="12"
       md="8"
       lg="7"
-      xl="6">>
+      xl="6">
         <h2 class="d-flex justify-center p-title">
           Clasificacion
         </h2>
