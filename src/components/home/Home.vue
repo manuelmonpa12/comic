@@ -1,6 +1,6 @@
 <template>
   <v-row 
-      class="d-flex justify-center flex-column align-center mt-2">
+      class="d-flex justify-center flex-column align-center mt-2 mx-2">
       <v-col class="border-item-dashed mb-5" cols="12"
       xs="12"
       sm="12"
