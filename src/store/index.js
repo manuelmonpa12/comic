@@ -24,7 +24,11 @@ export default new Vuex.Store({
       );
       if (exists) {
         state.dlgConfirmationType = false;
-        state.dlgConfirmationText = 'Este comic ya ha sido calificado'
+        if(localStorage.getItem('usr-lang') == 'es'){
+           state.dlgConfirmationText = "Este comic ya ha sido calificado"
+        }else{
+          state.dlgConfirmationText = "This comic has already been rated"
+        }
         state.dlgConfirmation = true
       } else {
         state.comicClassifiedData.push(commic);

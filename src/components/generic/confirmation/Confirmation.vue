@@ -12,14 +12,17 @@
       >
         <div class="content-title ">
           <h2 class=" d-flex justify-center p-title mb-2">
-            Confirmacion
+            {{$t('confirmation')}}
           </h2>
           <span v-if="dlgConfirmationText" class="d-flex justify-center p-sub-title-white">{{dlgConfirmationText}}</span>
         </div>
       </v-col>
       <v-card-actions>
+        <v-btn v-if="dlgConfirmationType" text @click="dlgConfirmation = false">
+            {{$t('cancel')}}
+        </v-btn>
         <v-btn block color="primary" text @click="deleteItem()">
-          Aceptar
+            {{$t('agree')}}
         </v-btn>
       </v-card-actions>
     </v-card>

@@ -1,0 +1,13 @@
+{
+  "title": "Title",
+  "langEs": "Spanish",
+  "langEn": "English",
+  "sort":"Sort out",
+  "emptyMsg":"There are no classified comics",
+  "classification":"Classification",
+  "confirmation":"Confirmation",
+  "agree":"I agree",
+  "cancel":"Cancel",
+  "existsMsg":"You want to delete the comic",
+  "loaded":"Successfully loaded"
+}

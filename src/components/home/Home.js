@@ -1,4 +1,4 @@
-import { getComic, getComicRamdom } from "../../api/comic";
+import { getComic } from "../../api/comic";
 import Classified from "../generic/classified/Classified.vue";
 export default {
   components: {
@@ -11,12 +11,28 @@ export default {
   },
   data: function() {
     return {
+      text: null,
+      snackbar: false,
       rating: 0,
       loading: false,
       randomNumber: 1,
     };
   },
   computed: {
+    languages() {
+      return [
+        {
+          title: this.$t("langEs"),
+          lang: "es",
+          flag: "es.png",
+        },
+        {
+          title: this.$t("langEn"),
+          lang: "en",
+          flag: "en.png",
+        },
+      ];
+    },
     comicClassifiedData: {
       get() {
         return this.$store.state.comicClassifiedData || [];
@@ -38,43 +54,64 @@ export default {
           value,
         });
       },
-    }
+    },
   },
   methods: {
     getComic,
-    getComicRamdom,
     comicClassified() {
-      console.log("dataComic :>> ", this.dataComic);
       this.$store.commit("ADD_RATE", this.rating);
       this.$store.commit("ADD_COMIC", this.dataComic);
-      this.rating = 0
+      this.rating = 0;
+    },
+    setInterfaceLang(lang) {
+      localStorage.setItem("usr-lang", lang || "en");
+      location.reload();
     },
     ramdomNumber() {
       this.loading = true;
       const min = 1;
-      let max = 0
+      let max = 0;
       if (this.dataComic) {
-         max = this.dataComic.num;
+        max = this.dataComic.num;
       } else {
-         max = 2;
+        max = 2;
       }
       this.randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
       this.ramdom();
     },
-    async fetchData() {
-      this.dataComic = await this.getComic();
-      this.loading = false;
+    fetchData() {
+      this.getComic(0, (res, error) => {
+        if (error) {
+          this.snackbar = true;
+          this.text = "Ocurrio un error";
+        } else {
+          this.snackbar = true;
+          this.text = "Cargado con exito";
+          this.dataComic = res;
+        }
+        this.loading = false;
+      });
     },
-    async ramdom() {
-      this.dataComic = await this.getComicRamdom(this.randomNumber);
-      this.loading = false;
-      this.rating = 0
+    ramdom() {
+      this.getComic(this.randomNumber, (res, error) => {
+        if (error) {
+          this.snackbar = true;
+          this.text = this.$t('loaded');
+        } else {
+          this.snackbar = true;
+          this.text = this.$t('loaded');
+          this.dataComic = res;
+        }
+        this.loading = false;
+        this.rating = 0;
+      });
     },
     activeParentModal() {
       this.loading = true;
     },
   },
-  async created() {
+  mounted() {
+    this.loading = true;
     this.fetchData();
   },
 };

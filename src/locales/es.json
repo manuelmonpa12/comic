@@ -1,0 +1,13 @@
+{
+  "title": "Titulo",  
+  "langEs": "Español",
+  "langEn": "Ingles",
+  "sort":"Clasificar",
+  "emptyMsg":"No hay cómic clasificados",
+  "classification":"Clasificación",
+  "confirmation":"Confirmación",
+  "agree":"Aceptar",
+  "cancel":"Cancelar",
+  "existsMsg":"Desea eliminar el comic",
+  "loaded":"Cargado con éxito"
+}

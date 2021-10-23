@@ -10,7 +10,7 @@
   >
     <div class="content-title ">
       <h2 class=" d-flex justify-center p-title mb-2">
-        Clasificación
+        {{$t('classification')}}
       </h2>
       <v-img contain max-height="50" src="../../../assets/masiv.png"></v-img>
     </div>
@@ -20,10 +20,10 @@
           <thead>
             <tr>
               <th class="text-left">
-                Titulo
+                {{$t('title')}}
               </th>
               <th class="text-left">
-                Calificación
+                {{$t('classification')}}
               </th>
               <th class="text-left"></th>
             </tr>
@@ -64,7 +64,7 @@
     </div>
     <div v-else>
       <v-alert dense class="mt-2" type="info" outlined
-        >No hay comic clasificados</v-alert
+        >{{$t('emptyMsg')}}</v-alert
       >
     </div>
     <confirmation :visible="dlgConfirmation" />
@@ -157,7 +157,7 @@ export default {
   methods: {
     setItem(item) {
       this.dlgConfirmationType = true;
-      this.dlgConfirmationText = `Desea eliminar el comic '${item.title}'`
+      this.dlgConfirmationText = this.$t('existsMsg')+' '+item.title
       this.dlgConfirmation = true;
       this.itemDetail = item;
     },
