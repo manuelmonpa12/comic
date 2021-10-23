@@ -9,5 +9,6 @@
   "agree":"Aceptar",
   "cancel":"Cancelar",
   "existsMsg":"Desea eliminar el comic",
-  "loaded":"Cargado con éxito"
+  "loaded":"Cargado con éxito",
+  "generate":"Generar"
 }

@@ -15,6 +15,9 @@
       <v-img contain max-height="50" src="../../../assets/masiv.png"></v-img>
     </div>
     <div v-if="comicClassifiedData.length > 0">
+        <v-btn small @click="exportPDF" color="primary" class=" mt-2" outlined>
+            {{$t('generate')}} PDF
+        </v-btn>
       <v-simple-table v-if="dataComic" dense class="mt-2">
         <template v-slot:default>
           <thead>
@@ -71,6 +74,8 @@
   </v-col>
 </template>
 <script>
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 import Confirmation from "../confirmation/Confirmation.vue";
 export default {
   components: {
@@ -155,6 +160,19 @@ export default {
     }
   },
   methods: {
+    exportPDF() {
+      var vm = this
+      var columns = [
+        {title: this.$t('title'), dataKey: "title"},
+        {title: this.$t('classification'), dataKey: "rate"}
+      ];
+      var doc = new jsPDF('p', 'pt');
+      doc.text('Comic  Manu', 40, 40);
+      doc.autoTable(columns, vm.comicClassifiedData, {
+        margin: {top: 60},
+      });
+      doc.save('comic-manu.pdf');
+    },
     setItem(item) {
       this.dlgConfirmationType = true;
       this.dlgConfirmationText = this.$t('existsMsg')+' '+item.title

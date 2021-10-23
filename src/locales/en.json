@@ -9,5 +9,6 @@
   "agree":"I agree",
   "cancel":"Cancel",
   "existsMsg":"You want to delete the comic",
-  "loaded":"Successfully loaded"
+  "loaded":"Successfully loaded",
+  "generate":"Generate"
 }
