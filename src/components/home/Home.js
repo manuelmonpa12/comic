@@ -1,71 +1,80 @@
 import { getComic, getComicRamdom } from "../../api/comic";
-
-import Loader from "../../components/generic/Loader";
+import Classified from "../generic/classified/Classified.vue";
 export default {
+  components: {
+    classified: Classified,
+  },
   inject: {
     theme: {
       default: { isDark: false },
     },
   },
-  components: {
-    loader: Loader,
-  },
   data: function() {
     return {
       rating: 0,
       loading: false,
-      dataComic: null,
-      headers: [
-        { text: "Titulo", value: "title" },
-        { text: "Calificacion", value: "rate" },
-      ],
       randomNumber: 1,
-      comicClassifiedData: [],
     };
+  },
+  computed: {
+    comicClassifiedData: {
+      get() {
+        return this.$store.state.comicClassifiedData || [];
+      },
+      set(value) {
+        this.$store.commit("SET_EDITING_OBJECT", {
+          key: "comicClassifiedData",
+          value,
+        });
+      },
+    },
+    dataComic: {
+      get() {
+        return this.$store.state.dataComic || null;
+      },
+      set(value) {
+        this.$store.commit("SET_EDITING_OBJECT", {
+          key: "dataComic",
+          value,
+        });
+      },
+    },
   },
   methods: {
     getComic,
     getComicRamdom,
-    filterComic(data) {
-      let dataFil = [];
-      data.forEach((element) => {
-        var exists = dataFil.find((prev) => prev.title === element.title);
-        if (exists) {
-          exists.rates = element.rates;
-        } else {
-          dataFil.push(this.dataComic);
-        }
-      });
-      this.comicClassifiedData = dataFil
-    },
     comicClassified() {
-      console.log("object :>> ", this.dataComic);
-      this.dataComic["rate"] = this.rating;
-      this.comicClassifiedData.push(this.dataComic);
-      this.filterComic(this.comicClassifiedData);
+      console.log("dataComic :>> ", this.dataComic);
+      this.$store.commit("ADD_RATE", this.rating);
+      this.$store.commit("ADD_COMIC", this.dataComic);
+      this.rating = 0
     },
     ramdomNumber() {
       this.loading = true;
       const min = 1;
-      const max = 2;
-      //   const max = this.dataComic.num;
+      let max = 0
+      if (this.dataComic) {
+         max = this.dataComic.num;
+      } else {
+         max = 2;
+      }
       this.randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
       this.ramdom();
-      this.loading = false;
     },
     async fetchData() {
       this.dataComic = await this.getComic();
-      console.log("fin :>> ", this.dataComic);
+      this.loading = false;
     },
     async ramdom() {
       this.dataComic = await this.getComicRamdom(this.randomNumber);
-      console.log("fin :>> ", this.dataComic);
+      this.loading = false;
+      this.rating = 0
     },
     activeParentModal() {
       this.loading = true;
     },
   },
-  mounted() {
+  async created() {
     this.fetchData();
   },
 };
