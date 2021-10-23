@@ -32,7 +32,7 @@
         >
           <v-skeleton-loader class="mx-auto" type="card"></v-skeleton-loader>
         </v-sheet>
-        <div class="text-center mt-12">
+        <div class="text-center mt-2">
           <v-rating
             v-show="dataComic"
             v-model="rating"
