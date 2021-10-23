@@ -38,7 +38,7 @@ export default {
           value,
         });
       },
-    },
+    }
   },
   methods: {
     getComic,

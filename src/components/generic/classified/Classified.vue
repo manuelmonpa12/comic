@@ -8,8 +8,8 @@
     lg="7"
     xl="6"
   >
-     <div class="content-title ">
-        <h2 class=" d-flex justify-center p-title mb-2" >
+    <div class="content-title ">
+      <h2 class=" d-flex justify-center p-title mb-2">
         Clasificación
       </h2>
       <v-img contain max-height="50" src="../../../assets/masiv.png"></v-img>
@@ -25,6 +25,7 @@
               <th class="text-left">
                 Calificación
               </th>
+              <th class="text-left"></th>
             </tr>
           </thead>
           <tbody>
@@ -32,13 +33,18 @@
               <td>{{ item.title }}</td>
               <td>
                 <v-rating
-                readonly
-                small
+                  readonly
+                  small
                   hover
                   length="5"
                   size="64"
                   :value="item.rate"
                 ></v-rating>
+              </td>
+              <td>
+                <v-btn small outlined color="red" @click="setItem(item)">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
               </td>
             </tr>
           </tbody>
@@ -57,14 +63,19 @@
       </v-sheet>
     </div>
     <div v-else>
-      <v-alert dense class="mt-2" type="warning"
+      <v-alert dense class="mt-2" type="info" outlined
         >No hay comic clasificados</v-alert
       >
     </div>
+    <confirmation :visible="dlgConfirmation" />
   </v-col>
 </template>
 <script>
+import Confirmation from "../confirmation/Confirmation.vue";
 export default {
+  components: {
+    confirmation: Confirmation,
+  },
   inject: {
     theme: {
       default: { isDark: false },
@@ -80,7 +91,6 @@ export default {
   name: "Classified",
   data: function() {
     return {
-      items: [],
     };
   },
   computed: {
@@ -99,8 +109,59 @@ export default {
         return this.$store.state.dataComic || null;
       },
     },
+    itemDetail: {
+      get() {
+        return this.$store.state.itemDetail || null;
+      },
+      set(value) {
+        this.$store.commit("SET_EDITING_OBJECT", {
+          key: "itemDetail",
+          value,
+        });
+      },
+    },
+    dlgConfirmationText: {
+      get() {
+        return this.$store.state.dlgConfirmationText || null;
+      },
+       set(value) {
+        this.$store.commit("SET_EDITING_OBJECT", {
+          key: "dlgConfirmationText",
+          value,
+        });
+      },
+    },
+    dlgConfirmation:{
+      get() {
+        return this.$store.state.dlgConfirmation || null;
+      },
+      set(value) {
+        this.$store.commit("SET_EDITING_OBJECT", {
+          key: "dlgConfirmation",
+          value,
+        });
+      },
+    },
+    dlgConfirmationType:{
+      get() {
+        return this.$store.state.dlgConfirmationType || null;
+      },
+      set(value) {
+        this.$store.commit("SET_EDITING_OBJECT", {
+          key: "dlgConfirmationType",
+          value,
+        });
+      },
+    }
   },
-  methods: {},
+  methods: {
+    setItem(item) {
+      this.dlgConfirmationType = true;
+      this.dlgConfirmationText = `Desea eliminar el comic '${item.title}'`
+      this.dlgConfirmation = true;
+      this.itemDetail = item;
+    },
+  },
   mounted() {},
 };
 </script>
