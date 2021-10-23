@@ -1,5 +1,5 @@
 # pokemon
-![alt text](https://github.com/manuelmonpa12/poke/blob/44c866439ffdbea1a37d7e8031bc8c5ae5dd86e9/src/assets/home.png)
+![alt text](https://github.com/manuelmonpa12/comic/blob/master/src/assets/pc.png)
 
 ## Project setup
 ```
@@ -24,7 +24,7 @@ See [demo](https://poke-v2.vercel.app/#/)
 [Vuejs](https://vuejs.org/), [Vuex](https://vuex.vuejs.org/), [Vuetify](https://vuetifyjs.com/en/), [Axios](https://www.npmjs.com/package/axios), [vue-clipboard2](https://www.npmjs.com/package/vue-clipboard2), [Vue Router](https://router.vuejs.org/), [Sass](https://sass-lang.com/).
 
 ### Vuex Favorites List
-![alt text](https://github.com/manuelmonpa12/poke/blob/ad39dfa2c5afdc5252df692964de78bc9c4de000/src/assets/vuex.png)
+![alt text](https://github.com/manuelmonpa12/comic/blob/master/src/assets/4926324.png)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
