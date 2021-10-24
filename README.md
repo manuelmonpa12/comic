@@ -24,7 +24,7 @@ See [Api](https://xkcd.com/json.html)
 
 
 ### Documento
-See [link](https://drive.google.com/file/d/124t7FPRoiwaYDzmK8MWNLIiG2K9jnNsa/view?usp=sharing)
+See [link](https://drive.google.com/file/d/115K-smba49Cvun8lik5K2l3j4g3sfc3J/view?usp=sharing)
 
 ### Technologies used
 [Vuejs](https://vuejs.org/), [Vuex](https://vuex.vuejs.org/), [Vuetify](https://vuetifyjs.com/en/), [VueSuperagent](https://www.npmjs.com/package/vue-superagent), [Vue Router](https://router.vuejs.org/), [Sass](https://sass-lang.com/), [vercel](https://vercel.com/), [jspdf](https://rawgit.com/MrRio/jsPDF/master/docs/), [jspdf-autotable](https://www.npmjs.com/package/jspdf-autotable).
